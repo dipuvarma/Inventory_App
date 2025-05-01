@@ -2,6 +2,9 @@ package com.example.inventoryapp.ui.item
 
 import android.util.Log
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.inventoryapp.data.local.table.Item
@@ -20,21 +23,23 @@ class AddItemViewModel @Inject constructor(
     private val repository: InventoryRepo,
 ) : ViewModel() {
 
-    private val _addItemState = MutableStateFlow(AddItemUiState())
-    val addItemState = _addItemState.stateIn(
-        viewModelScope,
-        SharingStarted.WhileSubscribed(5000),
-        AddItemUiState()
-    )
+    var itemUiState by mutableStateOf(AddItemUiState())
+        private set
 
+    suspend fun saveItem() {
+        if (isValidForm()) {
+            repository.insertItem(itemUiState.itemDetails.toItem())
+        }
+    }
 
-    fun insertItem(
-        itemDetails: ItemDetailsUi,
-    ) {
-        viewModelScope.launch {
-            repository.insertItem(
-                item = itemDetails.toItem()
-            )
+    fun updateUiState(itemDetails: ItemDetailsUi) {
+        itemUiState =
+            AddItemUiState(itemDetails = itemDetails, isEntryValid = isValidForm(itemDetails))
+    }
+
+    fun isValidForm(uiState: ItemDetailsUi = itemUiState.itemDetails): Boolean {
+        return with(uiState) {
+            name.isNotBlank() && price.isNotBlank() && quantity.isNotBlank()
         }
     }
 

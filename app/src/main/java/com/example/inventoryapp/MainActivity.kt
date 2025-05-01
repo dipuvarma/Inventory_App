@@ -15,6 +15,7 @@ import com.example.inventoryapp.data.repo.InventoryRepo
 import com.example.inventoryapp.ui.home.HomeScreen
 import com.example.inventoryapp.ui.item.AddItemScreen
 import com.example.inventoryapp.ui.item.AddItemViewModel
+import com.example.inventoryapp.ui.navigation.InventoryNavGraph
 import com.example.inventoryapp.ui.theme.InventoryAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,8 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             InventoryAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen()
-                    AddItemScreen()
+                    InventoryNavGraph()
                 }
             }
         }

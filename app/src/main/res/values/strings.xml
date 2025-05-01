@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Inventory App</string>
+    <string name="back">Back</string>
+    <string name="add_item_title">Add Item</string>
+    <string name="edit_item_title">Edit Item</string>
+    <string name="details_item_title">Details Title</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_price">Item Price</string>
+    <string name="quantity_in_stock">Quantity In Stock</string>
+    <string name="required_fields">*required fields</string>
+    <string name="save_btn">Save</string>
+    <string name="delete_btn">Delete</string>
+
 </resources>

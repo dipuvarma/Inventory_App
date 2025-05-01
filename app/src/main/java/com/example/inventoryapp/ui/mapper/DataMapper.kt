@@ -13,7 +13,7 @@ fun Item.toItemUiState(isEntryValid: Boolean = false): AddItemUiState = AddItemU
 
 fun Item.toItemsDetails(): ItemDetailsUi {
     return ItemDetailsUi(
-        id = id!!,
+        id = id,
         name = name,
         price = price.toString(),
         quantity = quantity.toString()
