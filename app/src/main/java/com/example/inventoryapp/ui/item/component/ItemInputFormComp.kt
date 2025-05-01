@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import com.example.inventoryapp.R
 import com.example.inventoryapp.ui.item.ItemDetailsUi
@@ -46,6 +47,7 @@ fun ItemInputFormComp(
             ),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
+                capitalization = KeyboardCapitalization.Sentences,
                 imeAction = ImeAction.Next
             ),
 

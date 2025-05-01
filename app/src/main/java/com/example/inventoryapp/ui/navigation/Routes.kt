@@ -13,4 +13,6 @@ object AddItem
 object EditItem
 
 @Serializable
-object DetailItem
+data class DetailItem(
+    val id: Int,
+)

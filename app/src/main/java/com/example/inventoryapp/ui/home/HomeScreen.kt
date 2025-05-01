@@ -21,6 +21,7 @@ import androidx.navigation.NavController
 import com.example.inventoryapp.R
 import com.example.inventoryapp.ui.component.TopAppBarComp
 import com.example.inventoryapp.ui.navigation.AddItem
+import com.example.inventoryapp.ui.navigation.DetailItem
 
 @Composable
 fun HomeScreen(
@@ -58,7 +59,10 @@ fun HomeScreen(
         ) {
             items(itemList.items) { item ->
                 CardItemListComp(
-                    item = item
+                    item = item,
+                    onItemClick = {
+                        navController.navigate(DetailItem(id = item.id))
+                    }
                 )
             }
         }

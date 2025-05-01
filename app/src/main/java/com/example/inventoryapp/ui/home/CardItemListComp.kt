@@ -18,7 +18,8 @@ import com.example.inventoryapp.data.local.table.Item
 @Composable
 fun CardItemListComp(
     modifier: Modifier = Modifier,
-    item: Item
+    item: Item,
+    onItemClick: () -> Unit,
 ) {
 
     Card(
@@ -33,7 +34,8 @@ fun CardItemListComp(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.onSecondaryContainer,
             contentColor = MaterialTheme.colorScheme.onSecondary
-        )
+        ),
+        onClick = { onItemClick() }
     ) {
         ItemListComp(
             item = item
